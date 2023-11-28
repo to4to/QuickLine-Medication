@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <h1>GAME STARTS NOW</h1>
+      <h1>GAME STARTS NNNNNNNNNNNNNNNNNNN</h1>
     </>
   )
 }
