@@ -24,6 +24,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+
     <div className="App">
 
       <Router>
@@ -37,6 +38,11 @@ function App() {
             </Routes>
         </Router>
     </div>
+
+    <>
+      <h1>GAME STARTS NNNNNNNNNNNNNNNNNNN</h1>
+    </>
+
   )
 }
 
