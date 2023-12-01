@@ -1,42 +1,207 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-light-clr);
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  background: #f2f2f2;
+  gap: 1rem;
+  height: 2rem;
+  border: 1px solid rgb(209, 209, 209);
+  box-shadow: 2px 5px 10px gray;
+}
+
+.input-wrapper input {
+  border: none;
+  width: 80%;
+  font-weight: 400;
+  background: #f2f2f2;
+}
+.amb-section label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.amb-section {
+  width: 25rem;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 1px 1px 9px 2px #7a7a7a;
+  position: relative;
+  top: 10rem;
+}
+
+.amb-section:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background-color: #9df9ff;
+  z-index: -1;
+}
+
+/* 
+.search-btn img{
+
+  border: 1px solid #9b9b9b;
+  padding: 0.5rem;
+  border-radius: 4px;
+} */
+
+.search-btn {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.search-btn .search-amb {
+  background: #ed0000;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 20px;
+  border: none;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  width: 100%;
+}
+.search-btn .search-amb:hover {
+  background-color: red;
+  color: white;
+}
+
+.search-btn .clock-btn {
+  width: 3rem;
+  height: 3rem;
+}
+
+nav.navbar {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  justify-content: center;
+  background: #8cfffd;
+  height: 6rem;
+  opacity: 0.8;
+  top: 0;
+}
+.ulauto {
+  display: inline-flex;
+}
+.ulauto li {
+  list-style: none;
+  padding: 20px;
+}
+.ulauto li a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  font-weight: bolder;
+  text-shadow: #1cc5d1;
+  text-shadow: 3px 7px 8px #a0a0a0;
+}
+
+.app-sec .in-sec img {
+  width: 200px;
+}
+
+.app-sec {
+  position: relative;
+  top: 10rem;
+}
+
+.logo img {
+  width: 6rem;
+}
+.logo {
+  display: inline-block;
+}
+.nav-in {
+  width: 100%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.first-sec {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.first-sec .in-sec {
+  display: inline-block;
+  border-radius: 17px;
+  width: 20rem;
+  height: 16rem;
+  background: #fff;
+  opacity: 0.8;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.in-sec p {
+  color: #00adb9;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: fantasy;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.card {
-  padding: 2em;
+.section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+  gap: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+.book_statement {
+  border-radius: 54px;
+  background: #017d85;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 15px 20px 1px 42px;
+  margin-bottom: 17px;
+}
+
+.book_statement p {
+  color: #fff;
+  font-size: 14.5px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.book_description {
+  text-align: center;
+}
+
+.book_description p {
+  color: #017d85;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chatApp {
+  position: relative;
+  top: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
 }
