@@ -7,6 +7,7 @@ const IMAGES = {
     mental_health : new URL('./mental_health.png', import.meta.url).href,
     pharmacy : new URL('./pharmacy.png', import.meta.url).href,
     logo : new URL('./logo.png', import.meta.url).href,
+    first_img : new URL('./first_img.png', import.meta.url).href,
     
 }
 

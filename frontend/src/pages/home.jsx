@@ -2,12 +2,19 @@ import React from "react";
 import IMAGES from "../images/Images";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import First_content from "../components/first_content";
 
 export const Home = () => {
   return (
     <>
       {/* <h1>this is home page(main index page)</h1>
-        <a href="/ambulance">Click here for Ambulance</a> */}
+        <a href="/ambulance">Click here for Ambulance</a> */}<br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+      <First_content />
 
       <div className="app-sec">
         <div className="first-sec">

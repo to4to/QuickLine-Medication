@@ -12,6 +12,7 @@ import Home from './pages/home'
 import Ambulance from './pages/ambulance';
 import Navbar from './components/navbar';
 import Chatbot from './pages/chatbot';
+import LobbyScreen from './screens/Lobby';
 
 
 import {
@@ -32,6 +33,7 @@ function App() {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/ambulance" element={<Ambulance />} />
                 <Route path="/mental_health" element={<Chatbot />} />
+                <Route path="/consult" element={<LobbyScreen />} />
 
                 
             </Routes>

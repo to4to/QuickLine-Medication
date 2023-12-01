@@ -1,114 +1,38 @@
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const dotenv = require("dotenv");
-// const twilio = require("twilio");
-// const pino = require("express-pino-logger")();
-// const app = express();
+const { Server } = require("socket.io");
 
-// dotenv.config();
+const io = new Server(8000, {
+  cors: true,
+});
 
-// const client = new client({
-//   accountSid: process.env.TWILIO_SID,
-//   authToken: process.env.TWILIO_AUTH_TOKEN,
-// });
+const emailToSocketIdMap = new Map();
+const socketidToEmailMap = new Map();
 
-// async function sendSMSi(to, from, body) {
-  // const client = new twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN)
-//   const message = await client.messages.create({
-//     body,
-//     to,
-//     from,
-//   });
-//   return message;
-// }
+io.on("connection", (socket) => {
+  console.log(`Socket Connected`, socket.id);
+  socket.on("room:join", (data) => {
+    const { email, room } = data;
+    emailToSocketIdMap.set(email, socket.id);
+    socketidToEmailMap.set(socket.id, email);
+    io.to(room).emit("user:joined", { email, id: socket.id });
+    socket.join(room);
+    io.to(socket.id).emit("room:join", data);
+  });
 
-// module.exports = sendSMSi;
-// export default sendSMSi;
+  socket.on("user:call", ({ to, offer }) => {
+    io.to(to).emit("incomming:call", { from: socket.id, offer });
+  });
 
-// app.listen(5000, () => console.log("Listening at port 5000"));
+  socket.on("call:accepted", ({ to, ans }) => {
+    io.to(to).emit("call:accepted", { from: socket.id, ans });
+  });
 
-// const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// app.use(pino);
+  socket.on("peer:nego:needed", ({ to, offer }) => {
+    console.log("peer:nego:needed", offer);
+    io.to(to).emit("peer:nego:needed", { from: socket.id, offer });
+  });
 
-// app.post("/api/messages", (req, res) => {
-//   res.header("Content-Type", "application/json");
-// });
-
-// app.post('/api/messages', (req, res) => {
-//     res.header('Content-Type', 'application/json');
-//     client.messages
-//       .create({
-//         from: process.env.TWILIO_PHONE_NUMBER,
-//         to: req.body.to,
-//         body: req.body.body
-//       })
-//       .then(() => {
-//         res.send(JSON.stringify({ success: true }));
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.send(JSON.stringify({ success: false }));
-//       });
-//   });
-
-// app.use(cors());
-
-// app.get('/', (req, res) => {
-//     res.send('Welcome to the Express Server')
-// })
-
-// app.get('/send-text', (req, res) => {
-//     const { recipient, textmessage } = req.query
-//     client.message.create({
-//         body: textmessage,
-//         to: recipient,
-//         from: sender
-//     }).then((message) => console.log(message.body));
-// })
-
-// app.listen(4000, () => console.log("Running on Port 4000"))
-
-
-
-
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const dotenv = require('dotenv');
-// const twilio = require('twilio');
-
-// dotenv.config();
-
-// const app = express();
-// const port = 4000;
-
-// app.use(bodyParser.json());
-
-// const client = twilio(
-//   process.env.TWILIO_SID,
-//   process.env.TWILIO_AUTH_TOKEN
-// );
-
-// app.post('/send-sms', async (req, res) => {
-//   const { to, body } = req.body;
-
-//   try {
-//     await client.messages.create({
-//       body,
-//       from: process.env.FROM_PHONE_NUMBER,
-//       to,
-//     });
-
-//     res.json({ success: true, message: 'SMS sent successfully' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ success: false, message: 'Failed to send SMS' });
-//   }
-// });
-
-// app.listen(port, () => {
-//   console.log(`Server is running on http://localhost:${port}`);
-// });
-
-
+  socket.on("peer:nego:done", ({ to, ans }) => {
+    console.log("peer:nego:done", ans);
+    io.to(to).emit("peer:nego:final", { from: socket.id, ans });
+  });
+});
