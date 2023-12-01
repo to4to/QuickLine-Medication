@@ -5,11 +5,11 @@ const app = express()
 
 dotenv.config()
 
-async function sendSMS(){
+function sendSMS(){
 
     const client = new twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN)
     return client.messages
-    .create({body: 'Hey this is a message' , from:process.env.FROM_PHONE_NUMBER , to: process.env.TO_PHONE_NUMBER})
+    .create({body: 'Hey , I need an emergency ambulance' , from:process.env.FROM_PHONE_NUMBER , to: process.env.TO_PHONE_NUMBER})
     .then(message => {
         
         console.log(message, "Message sent")
