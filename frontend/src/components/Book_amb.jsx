@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import searchAmb from "../pages/searchAmb";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
+
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
 
@@ -31,7 +32,7 @@ export const Book_amb = () => {
               id=""
             />
             {/* <GooglePlacesAutocomplete
-              apiKey={import.meta.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+              apiKey={import.meta.env.VITE_NEXT_PUBLIC_GOOGLE_API_KEY}
               selectProps={{
                 value,
                 onChange: setValue,
@@ -51,7 +52,7 @@ export const Book_amb = () => {
               id=""
             />
             {/* <GooglePlacesAutocomplete
-              apiKey={import.meta.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+              apiKey={import.meta.env.VITE_NEXT_PUBLIC_GOOGLE_API_KEY}
               selectProps={{
                 value,
                 onChange: setValue,
